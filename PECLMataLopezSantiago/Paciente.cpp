@@ -1,4 +1,5 @@
 #include "Paciente.hpp"
+#include <cstdlib>
 
 //CONSTRUCTORES
 Paciente::Paciente()
@@ -57,11 +58,12 @@ void Paciente::setHabitacion(int habitacion)
 //MÉTODO PRINCIPAL IMPRIMIR INFORMACIÓN
 void Paciente::mostrar() const
 {
-	std::cout << "El paciente cuyo DNI es " << dni << (apendicitis ? " tiene apendicitis" : " tiene hernia");
-	if (id != -1 && habitacion != -1)
+	if (id == -1 || habitacion == -1)
 	{
-		std::cout << ", su ID es: " << id << " y su habitación asignada es: " << habitacion;
-	}
-	std::cout << std::endl;
+		std::cout << "  El paciente cuyo DNI es " << dni << " tiene " << (apendicitis ? "apendicitis" : "hernias") << std::endl;
+	} else
+	  { 
+		std::cout << "  El paciente cuyo DNI es " << dni << " tiene " << (apendicitis ? "apendicitis" : "hernias")
+				  << ", su ID es: " << id << " y su habitacion asignada es: " << habitacion << std::endl;
+	  }
 }
-
